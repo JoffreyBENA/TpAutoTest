@@ -1,0 +1,40 @@
+Pour lancer l'application avec Docker Compose, 
+vous devez d'abord installer Docker Compose sur votre ordinateur. 
+Vous pouvez trouver les instructions d'installation sur le site officiel de Docker.
+https://docs.docker.com/
+
+Une fois que Docker Compose est installé, vous pouvez récupérer le dépôt contenant 
+l'application et les 6 images de test en utilisant la commande Git suivante:
+
+git clone https://github.com/JoffreyBENA/TpAutoTest/tree/main/ImagesDock
+
+Ensuite, vous devez accéder au répertoire de l'application avec la commande suivante:
+
+cd app
+
+Enfin, pour lancer l'application avec Docker Compose, utilisez la commande suivante:
+
+docker-compose up
+
+Cela lancera tous les services définis dans le fichier docker-compose.yml et 
+les reliera ensemble en utilisant le réseau mynetwork. 
+Les rapports de test seront disponibles sur l'adresse http://localhost:80.
+
+Il est important de noter que cette commande va lancer les services en arrière-plan, 
+vous pourrez voir les logs en utilisant la commande docker-compose logs. 
+Pour arrêter les services vous pouvez utiliser la commande : 
+
+docker-compose down.
+
+----------------------------------------------------------------------------------------
+En résumé, pour lancer l'application avec Docker Compose, vous devez:
+
+- installer Docker Compose sur votre ordinateur
+- récupérer le dépôt de l'application en utilisant la commande Git
+- accéder au répertoire de l'application
+- utiliser la commande docker-compose up pour lancer l'application
+- utiliser la commande docker-compose down pour arrêter les services.
+
+Pour plus de détails sur les commandes utilisées, 
+n'hésitez pas à consulter la documentation officielle de Docker Compose :
+https://docs.docker.com/compose/
