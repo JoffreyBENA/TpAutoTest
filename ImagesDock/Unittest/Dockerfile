@@ -1,17 +1,15 @@
 FROM python:3.9
 
-COPY python-api-handle-it /app
+RUN mkdir /report
 
-WORKDIR /app
+COPY AppPython/app/test/unit /app/test/unit
 
-RUN pip install -r requirements.txt
+WORKDIR /app/test/unit
 
-COPY tests /app/tests
+RUN pip install pytest pytest-html
 
-RUN python -m unittest discover -s app/tests/unit/ -t . -p 'test.py' -v --report-file=report.txt
+RUN pytest --html=/report/report.html test.py
 
-RUN mkdir /app/report
+EXPOSE 80
 
-RUN mv report.txt /app/report/
-
-VOLUME /app/report
+CMD ["python", "-m", "http.server", "80"]

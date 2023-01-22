@@ -6,6 +6,8 @@ RUN pip install -r requirements.txt
 COPY . /app
 WORKDIR /app
 
-CMD ["radon", "cc", "-s", "-a", "-o", "report/html", "-f", "html", "."]
+RUN radon cc -a -s -o /report/cyclomatique.html .
 
-VOLUME ["/app/report"]
+EXPOSE 80
+
+CMD ["python", "-m", "http.server", "80"]

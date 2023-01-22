@@ -6,8 +6,8 @@ RUN pip install -r requirements.txt
 COPY . /app
 WORKDIR /app
 
-RUN radon cc -s -a -i venv . --html  cc_report.html
-RUN radon raw -s -i venv . --html nbrlign_report.html
-RUN radon mi -s -i venv . --html nbrfonct_report.html
+RUN radon cc -s -o /report/metrique.html .
 
-VOLUME ["/app/report"]
+EXPOSE 80
+
+CMD ["python", "-m", "http.server", "80"]
