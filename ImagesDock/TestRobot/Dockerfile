@@ -5,11 +5,11 @@ RUN pip install -r requirements.txt
 
 RUN mkdir /report
 
-COPY AppPython/app/test/unit /app/test/unit
+COPY AppPython/app/test/system /app/test/system
 
-WORKDIR /app/test/unit
+WORKDIR /app/test/system
 
-RUN pytest --html=/report/report.html test.py
+RUN robot --outputdir /report --output /report/report.html machine.robot
 
 EXPOSE 80
 
