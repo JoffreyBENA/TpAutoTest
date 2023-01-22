@@ -1,0 +1,53 @@
+version: '3.9'
+
+services:
+  app:
+    build: .
+    ports:
+      - "80:80"
+    volumes:
+      - "./app:/app"
+    networks:
+      - mynetwork
+  test_unit:
+    build:
+    context: AppPython/app/test/unit
+    volumes:
+      - "./AppPython/app/test/unit:/app/test/unit"
+    networks:
+      - mynetwork
+  test_system:
+    build:
+    context: AppPython/app/test/system
+    volumes:
+      - "./AppPython/app/test/system:/app/test/system"
+    networks:
+      - mynetwork
+  pep8:
+    build:
+    context: AppPython/app
+    volumes:
+    - "./AppPython/app:/app"
+    networks:
+    - mynetwork
+  radon:
+    build:
+    context: AppPython/app
+    volumes:
+      - "./AppPython/app:/app"
+    networks:
+      - mynetwork
+  report:
+    build:
+    context: AppPython/app
+    ports:
+    - "80:80"
+    volumes:
+    - "./AppPython/app:/app"
+    - "./report:/report"
+    networks:
+    - mynetwork
+
+networks:
+mynetwork:
+driver: bridge
